@@ -18,7 +18,7 @@ const sonority = (sound: string) => {
   return 0
 }
 
-function makeWord(settings: LanguageSettings, short = false) {
+function makeWord(settings: LanguageSettings, short = false, exactSyllables?: number) {
   const consonants = settings.consonants.map(spellingFor)
   const initials = (settings.allowedInitials.length ? settings.allowedInitials : settings.consonants).map(spellingFor)
   const finals = (settings.allowedFinals.length ? settings.allowedFinals : settings.consonants).map(spellingFor)
@@ -42,7 +42,7 @@ function makeWord(settings: LanguageSettings, short = false) {
   }
   const harmonious = settings.vowels.filter(matchesHarmony)
   const vowels = (harmonious.length ? harmonious : settings.vowels).map(spellingFor)
-  const count = short ? 1 + Math.floor(Math.random() * 2) : 2 + Math.floor(Math.random() * 2)
+  const count = exactSyllables ?? (short ? 1 + Math.floor(Math.random() * 2) : 2 + Math.floor(Math.random() * 2))
   let word = ''
   for (let i = 0; i < count; i += 1) {
     const c = pick(initials)
@@ -90,8 +90,17 @@ export function generateLanguage(settings: LanguageSettings): GeneratedLanguage 
   }
   const roots = new Map([...allConcepts].map((concept) => [concept, inspiredRoots.get(concept)
     ?? makeWord(settings, shortCategories.has(categories.get(concept) ?? ''))]))
-  const suffix = settings.morphology === 'Agglutinative' ? `-${makeWord(settings, true)}` : ''
-  const render = (concept: string) => transliterate(`${roots.get(concept)}${suffix}`)
+  const endings = settings.morphology === 'Agglutinative' ? {
+    noun: makeWord(settings, true, 1),
+    verb: makeWord(settings, true, 1),
+    adjective: makeWord(settings, true, 1),
+  } : null
+  const render = (concept: string) => {
+    const category = categories.get(concept)
+    const ending = category && endings && category in endings
+      ? endings[category as keyof typeof endings] : ''
+    return transliterate(`${roots.get(concept)}${ending}`)
+  }
   const vocabulary = lexicon.map(([english, category]) => ({ english, category, native: render(english) }))
   const genderLabels = settings.genderSystem === '2 genders' ? ['I', 'II']
     : settings.genderSystem === '3 genders' ? ['I', 'II', 'III']

@@ -3,7 +3,6 @@ import type { Session } from '@supabase/supabase-js'
 import type { GeneratedLanguage } from '../lib/languageTypes'
 import { deleteSavedLanguage, listSavedLanguages, saveLanguage, type SavedLanguage } from '../lib/savedLanguages'
 import { supabase } from '../lib/supabase'
-import { Auth } from './Auth'
 
 interface Props { language: GeneratedLanguage; onLoad: (language: GeneratedLanguage) => void }
 
@@ -28,19 +27,19 @@ export function SaveLoadPanel({ language, onLoad }: Props) {
   useEffect(() => setName(language.name), [language])
 
   const save = async () => {
-    try { await saveLanguage(name.trim() || language.name, language); setMessage('Language saved.'); await refresh() }
+    try { await saveLanguage(name.trim() || language.name, language); setMessage('Language saved.'); await refresh(); window.dispatchEvent(new Event('saved-languages-changed')) }
     catch { setMessage('Could not save this language.') }
   }
 
   const remove = async (id: string) => {
-    try { await deleteSavedLanguage(id); await refresh() }
+    try { await deleteSavedLanguage(id); await refresh(); window.dispatchEvent(new Event('saved-languages-changed')) }
     catch { setMessage('Could not delete that save.') }
   }
 
   return (
     <section className="save-load-box">
       <div className="subheading"><span>06</span><h3>Save and load</h3></div>
-      {!session ? <Auth /> : <>
+      {!session ? <p className="save-message">Log in from the menu under the Glossopoem logo to save this language.</p> : <>
         <div className="save-row">
           <input value={name} maxLength={80} onChange={(event) => setName(event.target.value)} aria-label="Saved language name" />
           <button type="button" onClick={save}>Save current</button>

@@ -1,10 +1,11 @@
 import type { GeneratedLanguage } from '../lib/languageTypes'
 import { LanguageTools } from './LanguageTools'
 import { SaveLoadPanel } from './SaveLoadPanel'
+import type { BuilderStep } from './LanguageForm'
 
-interface Props { language: GeneratedLanguage | null; onRegenerate: () => void; onLoad: (language: GeneratedLanguage) => void }
+interface Props { language: GeneratedLanguage | null; onRegenerate: () => void; onLoad: (language: GeneratedLanguage) => void; onEdit: (step: BuilderStep) => void }
 
-export function LanguageResult({ language, onRegenerate, onLoad }: Props) {
+export function LanguageResult({ language, onRegenerate, onLoad, onEdit }: Props) {
   if (!language) return <section className="result-card result-empty"><span>✦</span><h2>Your language will appear here</h2><p>Choose an inspiration, build its sound inventory, and set its grammar to begin.</p></section>
 
   return (
@@ -15,8 +16,23 @@ export function LanguageResult({ language, onRegenerate, onLoad }: Props) {
           <h2>{language.name}</h2>
           <p className="native-name">{language.nativeName}</p>
         </div>
-        <button className="icon-button" onClick={onRegenerate} aria-label="Generate again">↻</button>
+        <div className="overview-actions">
+          <select aria-label="Modify language settings" defaultValue="" onChange={(event) => {
+            if (event.target.value) onEdit(event.target.value as BuilderStep)
+            event.target.value = ''
+          }}>
+            <option value="" disabled>Modify…</option>
+            <option value="inspiration">Inspiration</option>
+            <option value="sounds">Sounds</option>
+            <option value="sound-rules">Sound rules</option>
+            <option value="grammar">Grammar</option>
+            <option value="review">Review all</option>
+          </select>
+          <button className="icon-button" onClick={onRegenerate} aria-label="Generate again">↻</button>
+        </div>
       </div>
+
+      <SaveLoadPanel language={language} onLoad={onLoad} />
 
       <div className="language-meta">
         <span>{language.settings.morphology}</span><span>{language.settings.wordOrder}</span>
@@ -54,7 +70,6 @@ export function LanguageResult({ language, onRegenerate, onLoad }: Props) {
         <p className="translation-note">An artistic translation of the full argument, condensed into nine passages</p>
       </div>
       <LanguageTools language={language} />
-      <SaveLoadPanel language={language} onLoad={onLoad} />
     </section>
   )
 }
