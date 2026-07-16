@@ -13,6 +13,7 @@
   .hero h1 { font-size:clamp(39px,12vw,54px); }
   .hero-copy { font-size:15px; line-height:1.55; }
   .header-note { display:none; }
+  .header-actions { gap:0; }
   .account-trigger { min-height:32px; margin:-5px -8px -8px; padding:5px 8px; text-align:left; }
   .account-popover { position:fixed; top:76px; right:14px; left:14px; width:auto; max-height:calc(100dvh - 90px); overflow-y:auto; }
   .builder-workspace,.overview-page { padding-bottom:54px; }

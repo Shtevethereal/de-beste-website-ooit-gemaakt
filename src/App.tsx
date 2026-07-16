@@ -4,12 +4,16 @@ import { LanguageResult } from './components/LanguageResult'
 import { defaultSettings, generateLanguage } from './lib/languageGenerator'
 import type { LanguageSettings } from './lib/languageTypes'
 import { AccountMenu } from './components/AccountMenu'
+import { LanguageSelect } from './components/LanguageSelect'
+import { UiTranslator } from './components/UiTranslator'
+import type { UiLanguage } from './lib/i18n'
 
 export default function App() {
   const [settings, setSettings] = useState<LanguageSettings>(defaultSettings)
   const [language, setLanguage] = useState<ReturnType<typeof generateLanguage> | null>(null)
   const [page, setPage] = useState<'builder' | 'overview'>('builder')
   const [step, setStep] = useState<BuilderStep>('inspiration')
+  const [uiLanguage, setUiLanguage] = useState<UiLanguage>('en')
 
   const generate = () => {
     const validFinals = !settings.syllable.endsWith('C') || settings.allowedFinals.length >= 1
@@ -42,9 +46,10 @@ export default function App() {
 
   return (
     <main>
+      <UiTranslator language={uiLanguage} />
       <header className="site-header">
         <div className="brand-account"><a className="brand" href="#top" aria-label="Glossopoem home" onClick={() => setPage('builder')}><span className="brand-mark">G</span><span>Glossopoem</span></a><AccountMenu onLoad={loadLanguage} /></div>
-        <span className="header-note">A small language laboratory</span>
+        <div className="header-actions"><span className="header-note">A small language laboratory</span><LanguageSelect language={uiLanguage} onChange={setUiLanguage} /></div>
       </header>
 
       {page === 'builder' ? <><section className="hero" id="top">
@@ -52,7 +57,7 @@ export default function App() {
         <h1>Give a new language<br /><em>its first words.</em></h1>
         <p className="hero-copy">
           Choose its sounds and grammar. We’ll build a vocabulary and let it speak
-          Lincoln’s Gettysburg Address for the first time.
+          Article 1 of the Universal Declaration of Human Rights for the first time.
         </p>
       </section>
 

@@ -62,23 +62,16 @@ export const restrictedFinals: Partial<Record<LanguageFamily, string[]>> = {
 
 export const lexicon = [
   ['I', 'pronoun'], ['we', 'pronoun'], ['they', 'pronoun'], ['it', 'pronoun'], ['who', 'pronoun'], ['our', 'determiner'],
-  ['and', 'conjunction'], ['but', 'conjunction'], ['that', 'conjunction'], ['so', 'conjunction'], ['because', 'conjunction'],
-  ['the', 'article'], ['a', 'article'], ['here', 'adverb'], ['now', 'adverb'], ['never', 'adverb'], ['rather', 'adverb'],
-  ['create', 'verb'], ['conceive', 'verb'], ['dedicate', 'verb'], ['remember', 'verb'], ['forget', 'verb'], ['fight', 'verb'], ['give', 'verb'], ['live', 'verb'], ['die', 'verb'], ['perish', 'verb'],
-  ['father', 'noun'], ['nation', 'noun'], ['liberty', 'noun'], ['war', 'noun'], ['earth', 'noun'], ['people', 'noun'], ['government', 'noun'], ['world', 'noun'], ['work', 'noun'], ['field', 'noun'],
-  ['equal', 'adjective'], ['great', 'adjective'], ['brave', 'adjective'], ['living', 'adjective'], ['dead', 'adjective'], ['final', 'adjective'], ['unfinished', 'adjective'],
+  ['and', 'conjunction'], ['but', 'conjunction'], ['that', 'conjunction'], ['so', 'conjunction'], ['because', 'conjunction'], ['towards', 'preposition'],
+  ['the', 'article'], ['a', 'article'], ['all', 'determiner'], ['one-another', 'pronoun'],
+  ['be-born', 'verb'], ['endow', 'verb'], ['should', 'verb'], ['act', 'verb'],
+  ['human-being', 'noun'], ['dignity', 'noun'], ['right', 'noun'], ['reason', 'noun'], ['conscience', 'noun'], ['spirit', 'noun'], ['brotherhood', 'noun'],
+  ['free', 'adjective'], ['equal', 'adjective'],
 ] as const
 
 export const addressPassages = [
-  ['four-score', 'year', 'before', 'our', 'father', 'create', 'a', 'new', 'nation', 'conceive', 'in', 'liberty', 'and', 'dedicate', 'that', 'all', 'people', 'equal'],
-  ['now', 'we', 'fight', 'a', 'great', 'war', 'test', 'whether', 'that', 'nation', 'can', 'live'],
-  ['we', 'come', 'dedicate', 'a', 'field', 'for', 'they', 'who', 'give', 'life', 'that', 'nation', 'live'],
-  ['but', 'we', 'cannot', 'dedicate', 'we', 'cannot', 'bless', 'this', 'earth'],
-  ['the', 'brave', 'living', 'and', 'dead', 'who', 'fight', 'here', 'already', 'dedicate', 'it'],
-  ['the', 'world', 'may', 'not', 'remember', 'what', 'we', 'say', 'here', 'but', 'never', 'forget', 'what', 'they', 'do', 'here'],
-  ['rather', 'we', 'the', 'living', 'dedicate', 'to', 'the', 'unfinished', 'work', 'they', 'advance'],
-  ['we', 'resolve', 'that', 'the', 'dead', 'not', 'die', 'in-vain', 'and', 'this', 'nation', 'have', 'new', 'liberty'],
-  ['and', 'government', 'of', 'the', 'people', 'by', 'the', 'people', 'for', 'the', 'people', 'not', 'perish', 'from', 'the', 'earth'],
+  ['all', 'human-being', 'be-born', 'free', 'and', 'equal', 'in', 'dignity', 'and', 'right'],
+  ['they', 'endow', 'with', 'reason', 'and', 'conscience', 'and', 'should', 'act', 'towards', 'one-another', 'in', 'a', 'spirit', 'of', 'brotherhood'],
 ]
 
 export function transliterate(word: string) {

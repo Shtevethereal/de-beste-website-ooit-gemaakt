@@ -69,9 +69,9 @@ export function LanguageResult({ language, onRegenerate, onLoad, onEdit }: Props
       </div>
 
       <div className="address">
-        <div className="subheading"><span>04</span><h3>The Gettysburg Address</h3></div>
+        <div className="subheading"><span>04</span><h3>Universal Declaration of Human Rights</h3></div>
         <p className="translation">{language.translation}</p>
-        <p className="translation-note">An artistic translation of the full argument, condensed into nine passages</p>
+        <p className="translation-note">Article 1 · All human beings are born free and equal in dignity and rights</p>
       </div>
       <LanguageTools language={language} />
     </section>
