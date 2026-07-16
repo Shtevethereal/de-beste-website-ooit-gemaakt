@@ -1,0 +1,57 @@
+@media (max-width:800px) {
+  .workspace { grid-template-columns:1fr; }
+  .hero { padding-top:50px; }
+  .wizard-progress button { flex-direction:column; }
+  .sound-inventory { grid-template-columns:1fr; gap:16px; }
+  .sound-inventory p,.phonotactic-summary { overflow-wrap:anywhere; }
+}
+
+@media (max-width:520px) {
+  .site-header { padding-top:16px; padding-bottom:16px; }
+  .site-header,.hero,.workspace,.builder-workspace,.overview-page { padding-left:18px; padding-right:18px; }
+  .hero { padding-top:42px; padding-bottom:38px; }
+  .hero h1 { font-size:clamp(39px,12vw,54px); }
+  .hero-copy { font-size:15px; line-height:1.55; }
+  .header-note { display:none; }
+  .account-trigger { min-height:32px; margin:-5px -8px -8px; padding:5px 8px; text-align:left; }
+  .account-popover { position:fixed; top:76px; right:14px; left:14px; width:auto; max-height:calc(100dvh - 90px); overflow-y:auto; }
+  .builder-workspace,.overview-page { padding-bottom:54px; }
+  .overview-page { padding-top:30px; }
+  .builder-card,.result-card { padding:20px 18px; }
+  .slide-heading { margin-top:28px; }
+  .slide-heading h2 { font-size:28px; }
+  .family-first { margin-top:24px; padding:14px; }
+  .choice,.phoneme { min-height:44px; }
+  .choice-grid.three-columns { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .word-list { grid-template-columns:1fr; }
+  .vowel-chart { grid-template-columns:repeat(3,minmax(0,1fr)); aspect-ratio:auto; padding:8px; }
+  .phoneme-row { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .sound-toggle { min-width:44px; min-height:40px; }
+  .save-auth form,.save-row { grid-template-columns:1fr; }
+  .save-row button,.primary-button,.google-button { min-height:44px; }
+  .wizard-progress { display:flex; overflow-x:auto; overscroll-behavior-inline:contain; scrollbar-width:none; padding-bottom:4px; scroll-snap-type:x proximity; }
+  .wizard-progress::-webkit-scrollbar { display:none; }
+  .wizard-progress button { min-width:76px; min-height:52px; scroll-snap-align:start; }
+  .wizard-actions button { min-height:44px; }
+  .result-title { flex-direction:column; gap:14px; }
+  .result-title h2 { font-size:40px; overflow-wrap:anywhere; }
+  .native-name { font-size:19px; overflow-wrap:anywhere; }
+  .overview-actions { justify-content:space-between; width:100%; }
+  .overview-actions select { min-width:0; width:100%; min-height:44px; }
+  .icon-button { flex:0 0 44px; width:44px; height:44px; }
+  .language-meta { margin:20px 0; }
+  .translation { font-size:16px; line-height:1.65; overflow-wrap:anywhere; }
+  .translation-direction { grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr); gap:5px; }
+  .dictionary-entry { gap:12px; }
+  .dictionary-entry b,.dictionary-entry strong { overflow-wrap:anywhere; }
+  footer { padding:24px 18px; }
+}
+
+@media (max-width:360px) {
+  .site-header,.hero,.workspace,.builder-workspace,.overview-page { padding-left:12px; padding-right:12px; }
+  .builder-card,.result-card { padding:18px 14px; }
+  .brand { font-size:18px; }
+  .choice-grid,.choice-grid.three-columns { grid-template-columns:1fr; }
+  .case-choice { min-height:70px; }
+  .wizard-actions button { padding-right:12px; padding-left:12px; }
+}
