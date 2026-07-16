@@ -12,11 +12,3 @@ if (!url || !anonKey) {
 }
 
 export const supabase = createClient(url, anonKey);
-
-export function getGoogleOAuthUrl(redirectTo: string) {
-  const oauthUrl = new URL('/auth/v1/authorize', url as string)
-  oauthUrl.searchParams.set('provider', 'google')
-  oauthUrl.searchParams.set('redirect_to', redirectTo)
-  oauthUrl.searchParams.set('apikey', anonKey as string)
-  return oauthUrl.toString()
-}
