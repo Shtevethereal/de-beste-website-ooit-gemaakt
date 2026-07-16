@@ -12,7 +12,7 @@ export const soundSets: Record<LanguageFamily, { consonants: string[]; vowels: s
   Romance: { consonants: ['p', 'b', 't', 'd', 'k', 'g', 'f', 'v', 's', 'z', 'ʃ', 'ʒ', 'm', 'n', 'l', 'r', 'j'], vowels: ['i', 'e', 'ɛ', 'a', 'u', 'o', 'ɔ'] },
   Indic: { consonants: ['p', 'b', 't', 'd', 'ʈ', 'ɖ', 'k', 'g', 'tʃ', 'm', 'n', 'ɳ', 'ŋ', 's', 'ʃ', 'ʂ', 'h', 'l', 'ɭ', 'r', 'j'], vowels: ['i', 'ɪ', 'e', 'ɛ', 'a', 'ə', 'u', 'ʊ', 'o', 'ɔ'] },
   Koreanic: { consonants: ['p', 'pʰ', 'pʼ', 't', 'tʰ', 'tʼ', 'k', 'kʰ', 'kʼ', 'tɕ', 'tɕʰ', 'tɕʼ', 's', 'sʼ', 'm', 'n', 'ŋ', 'l', 'h'], vowels: ['i', 'e', 'ɛ', 'ɯ', 'ʌ', 'a', 'u', 'o'] },
-  Xoo: { consonants: ['p', 'b', 't', 'd', 'k', 'g', 'q', 'ʔ', 's', 'x', 'χ', 'h', 'm', 'n', 'ǀ', 'ǃ', 'ǁ', 'ǂ', 'ŋǃ', 'ǃʰ'], vowels: ['i', 'e', 'a', 'o', 'u'] },
+  Xoo: { consonants: ['p', 'b', 't', 'd', 'k', 'g', 'q', 'ʔ', 's', 'x', 'χ', 'h', 'm', 'n', 'ʘ', 'ǀ', 'ǃ', 'ǁ', 'ǂ', 'ŋǃ', 'ǃʰ'], vowels: ['i', 'e', 'a', 'o', 'u'] },
   'Niger-Congo': { consonants: ['p', 'b', 't', 'd', 'k', 'g', 'k͡p', 'g͡b', 'ɓ', 'ɗ', 'f', 's', 'ʃ', 'm', 'n', 'ɲ', 'ŋ', 'l', 'r', 'j', 'w'], vowels: ['i', 'ɪ', 'e', 'ɛ', 'a', 'ɔ', 'o', 'ʊ', 'u'] },
   Uralic: { consonants: ['p', 'b', 't', 'd', 'k', 'g', 'f', 'v', 's', 'ʃ', 'h', 'm', 'n', 'ŋ', 'l', 'r', 'j'], vowels: ['i', 'e', 'æ', 'y', 'ø', 'ɑ', 'u', 'o'] },
   Athabaskan: { consonants: ['t', 'tʼ', 'k', 'kʼ', 'q', 'qʼ', 'ts', 'tsʼ', 'tʃ', 'tʃʼ', 'tɬ', 'tɬʼ', 's', 'ʃ', 'ɬ', 'x', 'ɣ', 'm', 'n', 'j', 'w'], vowels: ['i', 'ɪ', 'e', 'ɛ', 'a', 'ɑ', 'o'] },

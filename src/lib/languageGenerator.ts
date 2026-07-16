@@ -10,6 +10,25 @@ export const defaultSettings: LanguageSettings = {
 
 const pick = <T,>(items: T[]) => items[Math.floor(Math.random() * items.length)]
 
+const xooVowels: Record<string, string[]> = {
+  a: ['á', 'à', 'ã', 'a̰'], e: ['é', 'è', 'ẽ', 'ḛ'], i: ['í', 'ì', 'ĩ', 'ḭ'],
+  o: ['ó', 'ò', 'õ', 'o̰'], u: ['ú', 'ù', 'ũ', 'ṵ'],
+}
+
+function finishWord(word: string, settings: LanguageSettings) {
+  const written = transliterate(word)
+  const usesXooOrthography = settings.mood === 'Xoo'
+    || settings.consonants.some((sound) => ['ʘ', 'ǀ', 'ǃ', 'ǁ', 'ǂ'].includes(sound))
+  if (!usesXooOrthography) return written
+  const seed = [...written].reduce((total, character) => total + character.charCodeAt(0), 0)
+  let vowelIndex = 0
+  return written.replace(/[aeiou]/g, (vowel) => {
+    const value = seed + vowelIndex * 17
+    vowelIndex += 1
+    return value % 20 < 11 ? xooVowels[vowel][value % xooVowels[vowel].length] : vowel
+  })
+}
+
 const sonority = (sound: string) => {
   if (/^[jw]/.test(sound)) return 4
   if (/^[lr]/.test(sound)) return 3
@@ -75,7 +94,7 @@ function adaptInspiredRoot(root: string, settings: LanguageSettings) {
     if (/[a-z]/.test(letter) && !'aeiouy'.includes(letter) && Math.random() < 0.06) return pick(consonants)
     return letter
   }).join('')
-  return transliterate(adapted)
+  return finishWord(adapted, settings)
 }
 
 export function generateLanguage(settings: LanguageSettings): GeneratedLanguage {
@@ -99,7 +118,7 @@ export function generateLanguage(settings: LanguageSettings): GeneratedLanguage 
     const category = categories.get(concept)
     const ending = category && endings && category in endings
       ? endings[category as keyof typeof endings] : ''
-    return transliterate(`${roots.get(concept)}${ending}`)
+    return finishWord(`${roots.get(concept)}${ending}`, settings)
   }
   const vocabulary = lexicon.map(([english, category]) => ({ english, category, native: render(english) }))
   const genderLabels = settings.genderSystem === '2 genders' ? ['I', 'II']
@@ -113,7 +132,7 @@ export function generateLanguage(settings: LanguageSettings): GeneratedLanguage 
       inspired = adaptInspiredRoot(pick(candidates), settings)
       inspiredRoots.set(english, inspired)
     }
-    const native = inspired ?? transliterate(makeWord(settings, category === 'function'))
+    const native = inspired ?? finishWord(makeWord(settings, category === 'function'), settings)
     const gender = category === 'noun' && genderLabels.length ? pick(genderLabels) : undefined
     return { english, category, native, gender }
   })
@@ -121,7 +140,7 @@ export function generateLanguage(settings: LanguageSettings): GeneratedLanguage 
   const nameRoot = makeWord(settings)
   return {
     name: nameRoot.charAt(0).toUpperCase() + nameRoot.slice(1),
-    nativeName: transliterate(nameRoot), settings,
+    nativeName: finishWord(nameRoot, settings), settings,
     consonants: settings.consonants, vowels: settings.vowels,
     vocabulary, dictionary, translation,
   }

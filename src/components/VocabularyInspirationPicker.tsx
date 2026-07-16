@@ -16,7 +16,7 @@ export function VocabularyInspirationPicker({ selected, onChange }: Props) {
       <legend>Vocabulary inspiration <span className="count">{selected.length || 'none'} selected</span></legend>
       <p className="field-help">Choose any number of families. This only inspires a few core roots; sounds and grammar stay independent.</p>
       <div className="choice-grid">
-        {families.map((family) => <button className={selected.includes(family) ? 'choice active' : 'choice'} key={family} type="button" onClick={() => toggle(family)}>{family}</button>)}
+        {families.map((family) => <button className={selected.includes(family) ? 'choice active' : 'choice'} key={family} type="button" onClick={() => toggle(family)}>{family === 'Xoo' ? 'ǃXóõ' : family}</button>)}
       </div>
       {selected.length > 0 && <button className="text-button" type="button" onClick={() => onChange([])}>Clear vocabulary inspiration</button>}
     </fieldset>

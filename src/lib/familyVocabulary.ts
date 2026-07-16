@@ -65,7 +65,7 @@ const patterns: Record<VocabularyFamily, { onsets: string[]; vowels: string[]; c
   Romance: { onsets: ['b', 'c', 'd', 'f', 'l', 'm', 'p', 'v'], vowels: ['a', 'e', 'i', 'o', 'u'], codas: ['', '', 'n', 'r', 's'] },
   Indic: { onsets: ['bh', 'd', 'g', 'k', 'm', 'n', 'p', 'sh'], vowels: ['a', 'i', 'u', 'e', 'o'], codas: ['', 'm', 'n', 'r', 't'] },
   Koreanic: { onsets: ['g', 'n', 'd', 'r', 'm', 'b', 's', 'j', 'ch', 'h'], vowels: ['a', 'eo', 'o', 'u', 'eu', 'i'], codas: ['', 'k', 'n', 't', 'l', 'm', 'ng'] },
-  Xoo: { onsets: ['ǀ', 'ǃ', 'ǁ', 'ǂ', 'q', 'qh', 't', 'n'], vowels: ['a', 'e', 'i', 'o', 'u'], codas: ['', '', 'm', 'n'] },
+  Xoo: { onsets: ['ʘ', 'ǀ', 'ǃ', 'ǁ', 'ǂ', 'q', 'qh', 't', 'n'], vowels: ['á', 'à', 'ã', 'a̰', 'é', 'ẽ', 'í', 'ĩ', 'ó', 'õ', 'ú', 'ũ'], codas: ['', '', 'm', 'n'] },
   'Niger-Congo': { onsets: ['b', 'd', 'k', 'm', 'n', 'ny', 'mb', 'ng', 'w'], vowels: ['i', 'e', 'ɛ', 'a', 'ɔ', 'o', 'u'], codas: ['', '', '', 'm', 'n'] },
   Uralic: { onsets: ['p', 't', 'k', 'm', 'n', 's', 'v', 'j', 'l', 'r'], vowels: ['i', 'e', 'ä', 'a', 'ö', 'o', 'u'], codas: ['', 'k', 'n', 'l', 'r', 's', 't'] },
   Athabaskan: { onsets: ['t', 'k', 'ts', 'ch', 'tl', 'sh', 'gh', 'ł', 'y'], vowels: ['i', 'e', 'a', 'o'], codas: ['', 'h', 'n', 's', 't', 'sh'] },
