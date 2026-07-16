@@ -20,7 +20,7 @@ export function LanguageForm({ settings, step, onStep, onChange, onGenerate }: P
   const index = builderSteps.indexOf(step)
   const isReady = settings.vowels.length >= 1 && settings.consonants.length >= 3 && settings.allowedInitials.length >= 1
     && (!settings.syllable.endsWith('C') || settings.allowedFinals.length >= 1)
-    && Boolean(settings.morphology && settings.syllable && settings.wordOrder && settings.genderSystem && settings.articleSystem && settings.conjugationSystem && settings.clusterPattern && settings.vowelSequences && settings.vowelHarmony)
+    && Boolean(settings.morphology && settings.syllable && settings.wordOrder && settings.genderSystem && settings.articleSystem && settings.clusterPattern && settings.vowelSequences && settings.vowelHarmony)
 
   const selectFamily = (mood: SoundMood) => {
     if (mood === 'None') return onChange({ ...settings, mood })

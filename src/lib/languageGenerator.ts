@@ -5,7 +5,7 @@ import { b1Vocabulary } from './b1Vocabulary'
 import { inspiredCandidates, isInspiredConcept } from './familyVocabulary'
 
 export const defaultSettings: LanguageSettings = {
-  mood: 'None', vocabularyInspirations: [], morphology: '', syllable: '', wordOrder: '', genderSystem: '', articleSystem: '', conjugationSystem: '', cases: [], regularity: 50, clusterPattern: '', vowelSequences: '', vowelHarmony: '', consonants: [], vowels: [], allowedInitials: [], allowedFinals: [],
+  mood: 'None', vocabularyInspirations: [], morphology: '', syllable: '', wordOrder: '', genderSystem: '', articleSystem: '', conjugationSystem: 'Tense + person', cases: [], regularity: 50, clusterPattern: '', vowelSequences: '', vowelHarmony: '', consonants: [], vowels: [], allowedInitials: [], allowedFinals: [],
 }
 
 const pick = <T,>(items: T[]) => items[Math.floor(Math.random() * items.length)]
