@@ -12,3 +12,13 @@ if (!url || !anonKey) {
 }
 
 export const supabase = createClient(url, anonKey);
+
+export function signInWithGoogle(redirectTo: string) {
+  return supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo,
+      queryParams: { apikey: anonKey as string },
+    },
+  })
+}

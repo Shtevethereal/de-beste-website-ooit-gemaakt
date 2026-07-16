@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { supabase } from '../lib/supabase'
+import { signInWithGoogle, supabase } from '../lib/supabase'
 
 type Mode = 'login' | 'signup'
 
@@ -25,10 +25,7 @@ export function Auth() {
   const continueWithGoogle = async () => {
     setBusy(true)
     setMessage('')
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: { redirectTo: window.location.origin },
-    })
+    const { error } = await signInWithGoogle(window.location.origin)
     if (error) {
       setMessage(error.message)
       setBusy(false)
