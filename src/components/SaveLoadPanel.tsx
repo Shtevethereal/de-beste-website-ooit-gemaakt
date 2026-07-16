@@ -38,7 +38,7 @@ export function SaveLoadPanel({ language, onLoad }: Props) {
 
   return (
     <section className="save-load-box">
-      <div className="subheading"><span>06</span><h3>Save and load</h3></div>
+      <div className="subheading"><span>07</span><h3>Save and load</h3></div>
       {!session ? <p className="save-message">Log in from the menu under the Glossopoem logo to save this language.</p> : <>
         <div className="save-row">
           <input value={name} maxLength={80} onChange={(event) => setName(event.target.value)} aria-label="Saved language name" />

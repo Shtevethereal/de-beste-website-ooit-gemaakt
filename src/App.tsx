@@ -13,7 +13,7 @@ export default function App() {
 
   const generate = () => {
     const validFinals = !settings.syllable.endsWith('C') || settings.allowedFinals.length >= 1
-    if (settings.vowels.length >= 1 && settings.consonants.length >= 3 && settings.allowedInitials.length >= 1 && validFinals && settings.morphology && settings.syllable && settings.wordOrder && settings.genderSystem && settings.articleSystem && settings.clusterPattern && settings.vowelSequences && settings.vowelHarmony) {
+    if (settings.vowels.length >= 1 && settings.consonants.length >= 3 && settings.allowedInitials.length >= 1 && validFinals && settings.morphology && settings.syllable && settings.wordOrder && settings.genderSystem && settings.articleSystem && settings.conjugationSystem && settings.clusterPattern && settings.vowelSequences && settings.vowelHarmony) {
       setLanguage(generateLanguage(settings))
       setPage('overview')
       window.scrollTo({ top: 0, behavior: 'smooth' })

@@ -12,7 +12,7 @@ export const builderSteps: BuilderStep[] = ['inspiration', 'sounds', 'sound-rule
 const stepNames: Record<BuilderStep, string> = { inspiration: 'Inspiration', sounds: 'Sounds', 'sound-rules': 'Sound rules', grammar: 'Grammar', review: 'Review' }
 const families: SoundMood[] = ['None', 'Germanic', 'Austronesian', 'Semitic', 'Turkic', 'Slavic', 'Japonic', 'Romance', 'Indic', 'Koreanic', 'Xoo', 'Niger-Congo', 'Uralic', 'Athabaskan']
 const soundRuleKeys: GrammarKey[] = ['syllable', 'clusterPattern', 'vowelSequences', 'vowelHarmony']
-const grammarKeys: GrammarKey[] = ['morphology', 'wordOrder', 'genderSystem', 'articleSystem']
+const grammarKeys: GrammarKey[] = ['morphology', 'wordOrder', 'genderSystem', 'articleSystem', 'conjugationSystem']
 
 interface Props { settings: LanguageSettings; step: BuilderStep; onStep: (step: BuilderStep) => void; onChange: (settings: LanguageSettings) => void; onGenerate: () => void }
 
@@ -20,7 +20,7 @@ export function LanguageForm({ settings, step, onStep, onChange, onGenerate }: P
   const index = builderSteps.indexOf(step)
   const isReady = settings.vowels.length >= 1 && settings.consonants.length >= 3 && settings.allowedInitials.length >= 1
     && (!settings.syllable.endsWith('C') || settings.allowedFinals.length >= 1)
-    && Boolean(settings.morphology && settings.syllable && settings.wordOrder && settings.genderSystem && settings.articleSystem && settings.clusterPattern && settings.vowelSequences && settings.vowelHarmony)
+    && Boolean(settings.morphology && settings.syllable && settings.wordOrder && settings.genderSystem && settings.articleSystem && settings.conjugationSystem && settings.clusterPattern && settings.vowelSequences && settings.vowelHarmony)
 
   const selectFamily = (mood: SoundMood) => {
     if (mood === 'None') return onChange({ ...settings, mood })

@@ -17,7 +17,7 @@ export function LanguageTools({ language }: Props) {
   return (
     <div className="language-tools">
       <section className="translator-box">
-        <div className="subheading"><span>04</span><h3>Basic translator</h3></div>
+        <div className="subheading"><span>05</span><h3>Basic translator</h3></div>
         <div className="translation-direction">
           <b>{reverse ? language.name : 'English'}</b>
           <button type="button" onClick={() => setReverse(!reverse)} aria-label="Reverse translation">⇄</button>
@@ -29,7 +29,7 @@ export function LanguageTools({ language }: Props) {
       </section>
 
       <section className="dictionary-box">
-        <div className="subheading"><span>05</span><h3>Dictionary</h3></div>
+        <div className="subheading"><span>06</span><h3>Dictionary</h3></div>
         <p className="dictionary-count">{language.dictionary.length} everyday words and forms</p>
         <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search English or generated words…" />
         <div className="dictionary-list">

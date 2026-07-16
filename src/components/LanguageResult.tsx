@@ -2,6 +2,7 @@ import type { GeneratedLanguage } from '../lib/languageTypes'
 import { LanguageTools } from './LanguageTools'
 import { SaveLoadPanel } from './SaveLoadPanel'
 import type { BuilderStep } from './LanguageForm'
+import { ConjugationTable } from './ConjugationTable'
 
 interface Props { language: GeneratedLanguage | null; onRegenerate: () => void; onLoad: (language: GeneratedLanguage) => void; onEdit: (step: BuilderStep) => void }
 
@@ -39,6 +40,7 @@ export function LanguageResult({ language, onRegenerate, onLoad, onEdit }: Props
         <span>{language.settings.syllable}</span><span>Latin · diacritics</span>
         <span>{language.settings.genderSystem === 'None' ? 'No gender' : language.settings.genderSystem}</span>
         <span>{language.settings.articleSystem === 'None' ? 'No articles' : `${language.settings.articleSystem} articles`}</span>
+        <span>{(language.settings.conjugationSystem ?? 'Tense + person') === 'None' ? 'No conjugation' : 'Tense + person conjugation'}</span>
         <span>{language.settings.cases.length === 0 ? 'No cases' : `${language.settings.cases.length} cases`}</span>
         <span>{language.settings.regularity}% regular</span>
         <span>{language.settings.clusterPattern}</span>
@@ -53,8 +55,10 @@ export function LanguageResult({ language, onRegenerate, onLoad, onEdit }: Props
       </div>
       <p className="phonotactic-summary"><b>Word edges:</b> starts with {language.settings.allowedInitials.join(', ')} · ends with {language.settings.allowedFinals.join(', ') || 'vowels only'}</p>
 
+      <ConjugationTable language={language} />
+
       <div className="vocabulary">
-        <div className="subheading"><span>02</span><h3>A working vocabulary</h3></div>
+        <div className="subheading"><span>03</span><h3>A working vocabulary</h3></div>
         <div className="word-list">
           {language.vocabulary.map((word) => (
             <div className="word" key={word.english}>
@@ -65,7 +69,7 @@ export function LanguageResult({ language, onRegenerate, onLoad, onEdit }: Props
       </div>
 
       <div className="address">
-        <div className="subheading"><span>03</span><h3>The Gettysburg Address</h3></div>
+        <div className="subheading"><span>04</span><h3>The Gettysburg Address</h3></div>
         <p className="translation">{language.translation}</p>
         <p className="translation-note">An artistic translation of the full argument, condensed into nine passages</p>
       </div>
