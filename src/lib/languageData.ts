@@ -11,6 +11,11 @@ export const soundSets: Record<LanguageFamily, { consonants: string[]; vowels: s
   Japonic: { consonants: ['p', 'b', 't', 'd', 'k', 'g', 's', 'z', 'ʃ', 'tʃ', 'm', 'n', 'r', 'h', 'j', 'ʔ'], vowels: ['i', 'e', 'a', 'o', 'ɯ'] },
   Romance: { consonants: ['p', 'b', 't', 'd', 'k', 'g', 'f', 'v', 's', 'z', 'ʃ', 'ʒ', 'm', 'n', 'l', 'r', 'j'], vowels: ['i', 'e', 'ɛ', 'a', 'u', 'o', 'ɔ'] },
   Indic: { consonants: ['p', 'b', 't', 'd', 'ʈ', 'ɖ', 'k', 'g', 'tʃ', 'm', 'n', 'ɳ', 'ŋ', 's', 'ʃ', 'ʂ', 'h', 'l', 'ɭ', 'r', 'j'], vowels: ['i', 'ɪ', 'e', 'ɛ', 'a', 'ə', 'u', 'ʊ', 'o', 'ɔ'] },
+  Koreanic: { consonants: ['p', 'pʰ', 'pʼ', 't', 'tʰ', 'tʼ', 'k', 'kʰ', 'kʼ', 'tɕ', 'tɕʰ', 'tɕʼ', 's', 'sʼ', 'm', 'n', 'ŋ', 'l', 'h'], vowels: ['i', 'e', 'ɛ', 'ɯ', 'ʌ', 'a', 'u', 'o'] },
+  Xoo: { consonants: ['p', 'b', 't', 'd', 'k', 'g', 'q', 'ʔ', 's', 'x', 'χ', 'h', 'm', 'n', 'ǀ', 'ǃ', 'ǁ', 'ǂ', 'ŋǃ', 'ǃʰ'], vowels: ['i', 'e', 'a', 'o', 'u'] },
+  'Niger-Congo': { consonants: ['p', 'b', 't', 'd', 'k', 'g', 'k͡p', 'g͡b', 'ɓ', 'ɗ', 'f', 's', 'ʃ', 'm', 'n', 'ɲ', 'ŋ', 'l', 'r', 'j', 'w'], vowels: ['i', 'ɪ', 'e', 'ɛ', 'a', 'ɔ', 'o', 'ʊ', 'u'] },
+  Uralic: { consonants: ['p', 'b', 't', 'd', 'k', 'g', 'f', 'v', 's', 'ʃ', 'h', 'm', 'n', 'ŋ', 'l', 'r', 'j'], vowels: ['i', 'e', 'æ', 'y', 'ø', 'ɑ', 'u', 'o'] },
+  Athabaskan: { consonants: ['t', 'tʼ', 'k', 'kʼ', 'q', 'qʼ', 'ts', 'tsʼ', 'tʃ', 'tʃʼ', 'tɬ', 'tɬʼ', 's', 'ʃ', 'ɬ', 'x', 'ɣ', 'm', 'n', 'j', 'w'], vowels: ['i', 'ɪ', 'e', 'ɛ', 'a', 'ɑ', 'o'] },
 }
 
 type FamilyGrammar = { morphology: Exclude<LanguageSettings['morphology'], ''>; syllable: Exclude<LanguageSettings['syllable'], ''>; wordOrder: Exclude<LanguageSettings['wordOrder'], ''>; genderSystem: Exclude<LanguageSettings['genderSystem'], ''>; articleSystem: Exclude<LanguageSettings['articleSystem'], ''>; cases: GrammaticalCase[]; regularity: number; clusterPattern: Exclude<LanguageSettings['clusterPattern'], ''>; vowelSequences: Exclude<LanguageSettings['vowelSequences'], ''>; vowelHarmony: Exclude<LanguageSettings['vowelHarmony'], ''> }
@@ -24,6 +29,11 @@ export const familyGrammar: Record<LanguageFamily, FamilyGrammar> = {
   Japonic: { morphology: 'Agglutinative', syllable: 'CV', wordOrder: 'SOV', genderSystem: 'None', articleSystem: 'None', cases: ['Nominative', 'Accusative', 'Genitive', 'Dative', 'Locative', 'Allative', 'Ablative', 'Comitative'], regularity: 95, clusterPattern: 'No clusters', vowelSequences: 'Long vowels', vowelHarmony: 'None' },
   Romance: { morphology: 'Fusional', syllable: 'CVC', wordOrder: 'SVO', genderSystem: '2 genders', articleSystem: 'Gendered + plural', cases: [], regularity: 40, clusterPattern: 'Rising sonority', vowelSequences: 'Diphthongs', vowelHarmony: 'None' },
   Indic: { morphology: 'Fusional', syllable: 'CVC', wordOrder: 'SOV', genderSystem: '3 genders', articleSystem: 'None', cases: ['Nominative', 'Accusative', 'Genitive', 'Dative', 'Instrumental', 'Locative', 'Ablative', 'Vocative'], regularity: 35, clusterPattern: 'Rising sonority', vowelSequences: 'Long vowels', vowelHarmony: 'None' },
+  Koreanic: { morphology: 'Agglutinative', syllable: 'CVC', wordOrder: 'SOV', genderSystem: 'None', articleSystem: 'None', cases: ['Nominative', 'Accusative', 'Genitive', 'Dative', 'Instrumental', 'Locative', 'Vocative'], regularity: 85, clusterPattern: 'No clusters', vowelSequences: 'No sequences', vowelHarmony: 'None' },
+  Xoo: { morphology: 'Isolating', syllable: 'CV', wordOrder: 'SVO', genderSystem: 'None', articleSystem: 'None', cases: [], regularity: 70, clusterPattern: 'No clusters', vowelSequences: 'Long vowels', vowelHarmony: 'None' },
+  'Niger-Congo': { morphology: 'Agglutinative', syllable: 'CV', wordOrder: 'SVO', genderSystem: '5+ classes', articleSystem: 'None', cases: [], regularity: 85, clusterPattern: 'No clusters', vowelSequences: 'Harmony-bound', vowelHarmony: 'Advanced tongue root (ATR)' },
+  Uralic: { morphology: 'Agglutinative', syllable: 'CVC', wordOrder: 'SOV', genderSystem: 'None', articleSystem: 'None', cases: ['Nominative', 'Accusative', 'Genitive', 'Dative', 'Instrumental', 'Locative', 'Ablative', 'Allative', 'Elative', 'Illative', 'Adessive', 'Inessive', 'Essive', 'Translative'], regularity: 90, clusterPattern: 'Rising sonority', vowelSequences: 'Long vowels', vowelHarmony: 'Front / back' },
+  Athabaskan: { morphology: 'Polysynthetic', syllable: 'CVCC', wordOrder: 'SOV', genderSystem: 'None', articleSystem: 'None', cases: [], regularity: 65, clusterPattern: 'Falling sonority', vowelSequences: 'Long vowels', vowelHarmony: 'None' },
 }
 
 export const forbiddenInitials: Record<LanguageFamily, string[]> = {
@@ -35,11 +45,19 @@ export const forbiddenInitials: Record<LanguageFamily, string[]> = {
   Japonic: ['ŋ', 'ʔ'],
   Romance: ['ŋ', 'ʃ', 'ʒ'],
   Indic: ['ŋ', 'ɳ', 'ɭ'],
+  Koreanic: ['ŋ', 'l'],
+  Xoo: ['ŋǃ'],
+  'Niger-Congo': ['ŋ'],
+  Uralic: ['ŋ'],
+  Athabaskan: [],
 }
 
 export const restrictedFinals: Partial<Record<LanguageFamily, string[]>> = {
   Austronesian: ['m', 'n', 'ŋ', 'ʔ'],
   Japonic: ['n', 'ʔ'],
+  Koreanic: ['k', 'n', 't', 'l', 'm', 'ŋ'],
+  Xoo: ['m', 'n'],
+  'Niger-Congo': ['m', 'n', 'ŋ'],
 }
 
 export const lexicon = [

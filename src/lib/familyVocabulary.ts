@@ -48,6 +48,11 @@ export const familyVocabulary: Record<VocabularyFamily, Partial<Record<BasicConc
     I: ['aham', 'mai'], dog: ['shvan', 'kutta'], water: ['jal', 'pani'],
     father: ['pita'], house: ['ghar', 'griha'], name: ['nam'],
   },
+  Koreanic: { I: ['na', 'jeo'], dog: ['gae'], water: ['mul'], father: ['abeoji'], house: ['jip'], name: ['ireum'] },
+  Xoo: { I: ['n'], water: ['qhaa'], father: ['taa'], house: ['nǁaa'], name: ['ǃaa'] },
+  'Niger-Congo': { I: ['mi', 'nze'], dog: ['mbwa'], water: ['maji'], father: ['baba'], house: ['nyumba'], name: ['jina'] },
+  Uralic: { I: ['mina', 'mon'], dog: ['koira'], water: ['vesi'], father: ['isa'], house: ['koti'], name: ['nimi'] },
+  Athabaskan: { I: ['shi'], dog: ['leechaai'], water: ['to'], father: ['azhee'], house: ['hooghan'], name: ['yilye'] },
 }
 
 const patterns: Record<VocabularyFamily, { onsets: string[]; vowels: string[]; codas: string[] }> = {
@@ -59,6 +64,11 @@ const patterns: Record<VocabularyFamily, { onsets: string[]; vowels: string[]; c
   Japonic: { onsets: ['k', 's', 't', 'n', 'h', 'm', 'y', 'r'], vowels: ['a', 'i', 'u', 'e', 'o'], codas: ['', '', '', 'n'] },
   Romance: { onsets: ['b', 'c', 'd', 'f', 'l', 'm', 'p', 'v'], vowels: ['a', 'e', 'i', 'o', 'u'], codas: ['', '', 'n', 'r', 's'] },
   Indic: { onsets: ['bh', 'd', 'g', 'k', 'm', 'n', 'p', 'sh'], vowels: ['a', 'i', 'u', 'e', 'o'], codas: ['', 'm', 'n', 'r', 't'] },
+  Koreanic: { onsets: ['g', 'n', 'd', 'r', 'm', 'b', 's', 'j', 'ch', 'h'], vowels: ['a', 'eo', 'o', 'u', 'eu', 'i'], codas: ['', 'k', 'n', 't', 'l', 'm', 'ng'] },
+  Xoo: { onsets: ['ǀ', 'ǃ', 'ǁ', 'ǂ', 'q', 'qh', 't', 'n'], vowels: ['a', 'e', 'i', 'o', 'u'], codas: ['', '', 'm', 'n'] },
+  'Niger-Congo': { onsets: ['b', 'd', 'k', 'm', 'n', 'ny', 'mb', 'ng', 'w'], vowels: ['i', 'e', 'ɛ', 'a', 'ɔ', 'o', 'u'], codas: ['', '', '', 'm', 'n'] },
+  Uralic: { onsets: ['p', 't', 'k', 'm', 'n', 's', 'v', 'j', 'l', 'r'], vowels: ['i', 'e', 'ä', 'a', 'ö', 'o', 'u'], codas: ['', 'k', 'n', 'l', 'r', 's', 't'] },
+  Athabaskan: { onsets: ['t', 'k', 'ts', 'ch', 'tl', 'sh', 'gh', 'ł', 'y'], vowels: ['i', 'e', 'a', 'o'], codas: ['', 'h', 'n', 's', 't', 'sh'] },
 }
 
 const hash = (value: string) => [...value].reduce((total, letter) => (total * 31 + letter.charCodeAt(0)) >>> 0, 7)

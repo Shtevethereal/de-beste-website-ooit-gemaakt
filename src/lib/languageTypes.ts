@@ -7,7 +7,7 @@ export type VowelHarmony = 'None' | 'Front / back' | 'Front / back + neutral' | 
 export type GrammaticalCase = 'Nominative' | 'Accusative' | 'Genitive' | 'Dative' | 'Instrumental' | 'Locative' | 'Ablative' | 'Allative' | 'Elative' | 'Illative' | 'Adessive' | 'Inessive' | 'Essive' | 'Translative' | 'Vocative' | 'Comitative'
 export type ClusterPattern = 'No clusters' | 'Rising sonority' | 'Falling sonority' | 'Unrestricted'
 export type VowelSequences = 'No sequences' | 'Long vowels' | 'Diphthongs' | 'Hiatus' | 'Harmony-bound'
-export type SoundMood = 'None' | 'Germanic' | 'Austronesian' | 'Semitic' | 'Turkic' | 'Slavic' | 'Japonic' | 'Romance' | 'Indic'
+export type SoundMood = 'None' | 'Germanic' | 'Austronesian' | 'Semitic' | 'Turkic' | 'Slavic' | 'Japonic' | 'Romance' | 'Indic' | 'Koreanic' | 'Xoo' | 'Niger-Congo' | 'Uralic' | 'Athabaskan'
 export type VocabularyFamily = Exclude<SoundMood, 'None'>
 
 export interface LanguageSettings {

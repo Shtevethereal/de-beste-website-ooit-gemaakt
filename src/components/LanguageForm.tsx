@@ -10,7 +10,7 @@ import { VocabularyInspirationPicker } from './VocabularyInspirationPicker'
 export type BuilderStep = 'inspiration' | 'sounds' | 'sound-rules' | 'grammar' | 'review'
 export const builderSteps: BuilderStep[] = ['inspiration', 'sounds', 'sound-rules', 'grammar', 'review']
 const stepNames: Record<BuilderStep, string> = { inspiration: 'Inspiration', sounds: 'Sounds', 'sound-rules': 'Sound rules', grammar: 'Grammar', review: 'Review' }
-const families: SoundMood[] = ['None', 'Germanic', 'Austronesian', 'Semitic', 'Turkic', 'Slavic', 'Japonic', 'Romance', 'Indic']
+const families: SoundMood[] = ['None', 'Germanic', 'Austronesian', 'Semitic', 'Turkic', 'Slavic', 'Japonic', 'Romance', 'Indic', 'Koreanic', 'Xoo', 'Niger-Congo', 'Uralic', 'Athabaskan']
 const soundRuleKeys: GrammarKey[] = ['syllable', 'clusterPattern', 'vowelSequences', 'vowelHarmony']
 const grammarKeys: GrammarKey[] = ['morphology', 'wordOrder', 'genderSystem', 'articleSystem']
 

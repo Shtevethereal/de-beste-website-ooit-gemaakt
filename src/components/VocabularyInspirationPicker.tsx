@@ -5,7 +5,7 @@ interface Props {
   onChange: (families: VocabularyFamily[]) => void
 }
 
-const families: VocabularyFamily[] = ['Germanic', 'Austronesian', 'Semitic', 'Turkic', 'Slavic', 'Japonic', 'Romance', 'Indic']
+const families: VocabularyFamily[] = ['Germanic', 'Austronesian', 'Semitic', 'Turkic', 'Slavic', 'Japonic', 'Romance', 'Indic', 'Koreanic', 'Xoo', 'Niger-Congo', 'Uralic', 'Athabaskan']
 
 export function VocabularyInspirationPicker({ selected, onChange }: Props) {
   const toggle = (family: VocabularyFamily) => onChange(selected.includes(family)
