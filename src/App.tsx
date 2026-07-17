@@ -7,6 +7,7 @@ import { AccountMenu } from './components/AccountMenu'
 import { LanguageSelect } from './components/LanguageSelect'
 import { UiTranslator } from './components/UiTranslator'
 import type { UiLanguage } from './lib/i18n'
+import { LinguisticsAssistant } from './components/LinguisticsAssistant'
 
 export default function App() {
   const [settings, setSettings] = useState<LanguageSettings>(defaultSettings)
@@ -68,6 +69,7 @@ export default function App() {
       </div>}
 
       <footer>Made for curious linguists · Every generation is unique</footer>
+      <LinguisticsAssistant language={uiLanguage} />
     </main>
   )
 }

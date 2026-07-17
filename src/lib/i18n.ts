@@ -1,6 +1,7 @@
 export type UiLanguage = 'en' | 'ru'
 
 const russian: Record<string, string> = {
+  'Ask a linguist': 'Спросить лингвиста',
   'A small language laboratory': 'Маленькая языковая лаборатория',
   'Constructed language generator': 'Генератор искусственных языков',
   'Give a new language': 'Подарите новому языку',
