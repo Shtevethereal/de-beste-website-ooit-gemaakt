@@ -3,6 +3,7 @@ import type { GeneratedLanguage, LanguageSettings } from './languageTypes'
 import { spellingFor, vowels as vowelInventory } from './phonemes'
 import { b1Vocabulary } from './b1Vocabulary'
 import { inspiredCandidates, isInspiredConcept } from './familyVocabulary'
+import { declarationAliases } from './declarationVocabulary'
 
 export const defaultSettings: LanguageSettings = {
   mood: 'None', vocabularyInspirations: [], morphology: '', syllable: '', wordOrder: '', genderSystem: '', articleSystem: '', conjugationSystem: 'Tense + person', cases: [], regularity: 50, clusterPattern: '', vowelSequences: '', vowelHarmony: '', consonants: [], vowels: [], allowedInitials: [], allowedFinals: [],
@@ -126,6 +127,12 @@ export function generateLanguage(settings: LanguageSettings): GeneratedLanguage 
     : settings.genderSystem === '4 genders' ? ['I', 'II', 'III', 'IV']
     : settings.genderSystem === '5+ classes' ? ['I', 'II', 'III', 'IV', 'V', 'VI'] : []
   const dictionary = b1Vocabulary.map(({ english, category }) => {
+    const declarationConcept = Object.entries(declarationAliases)
+      .find(([, aliases]) => aliases.includes(english))?.[0] ?? english
+    if (roots.has(declarationConcept)) {
+      const gender = category === 'noun' && genderLabels.length ? pick(genderLabels) : undefined
+      return { english, category, native: render(declarationConcept), gender }
+    }
     let inspired = inspiredRoots.get(english)
     if (!inspired && isInspiredConcept(english) && settings.vocabularyInspirations.length > 0) {
       const candidates = inspiredCandidates(english, settings.vocabularyInspirations)
@@ -136,12 +143,15 @@ export function generateLanguage(settings: LanguageSettings): GeneratedLanguage 
     const gender = category === 'noun' && genderLabels.length ? pick(genderLabels) : undefined
     return { english, category, native, gender }
   })
+  const declarationEntries = Object.entries(declarationAliases).flatMap(([concept, aliases]) =>
+    aliases.map((english) => ({ english, native: render(concept), category: categories.get(concept) ?? 'function' })))
+  const completeDictionary = [...dictionary, ...declarationEntries]
   const translation = addressPassages.map((passage) => passage.map(render).join(' ') + '.').join('\n\n')
   const nameRoot = makeWord(settings)
   return {
     name: nameRoot.charAt(0).toUpperCase() + nameRoot.slice(1),
     nativeName: finishWord(nameRoot, settings), settings,
     consonants: settings.consonants, vowels: settings.vowels,
-    vocabulary, dictionary, translation,
+    vocabulary, dictionary: completeDictionary, translation,
   }
 }
